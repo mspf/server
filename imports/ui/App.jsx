@@ -28,6 +28,34 @@ class App extends Component {
     this.optionAInput.value = '';
     this.optionBInput.value = '';
   }
+
+  renderNewQuestionForm() {
+    return (
+      <form className='new-question' onSubmit={this.handleSubmit.bind(this)} >
+        <input
+          className="question-input"
+          type='text'
+          ref={ref => this.questionInput = ref}
+          placeholder='Type to add new questions'
+        />
+
+        <input
+          className="option-input"
+          type='text'
+          ref={ref => this.optionAInput = ref}
+          placeholder='Option A'
+        />
+
+        <input
+          className="option-input"
+          type='text'
+          ref={ref => this.optionBInput = ref}
+          placeholder='Option B'
+        />
+
+        <button className='btn'>Add</button>
+      </form>);
+  }
  
   render() {
     return (
@@ -40,30 +68,7 @@ class App extends Component {
           {this.renderQuestions()}
         </ul>
 
-        <form className='new-question' onSubmit={this.handleSubmit.bind(this)} >
-          <input
-            className="question-input"
-            type='text'
-            ref={ref => this.questionInput = ref}
-            placeholder='Type to add new questions'
-          />
-
-          <input
-            className="option-input"
-            type='text'
-            ref={ref => this.optionAInput = ref}
-            placeholder='Option A'
-          />
-
-          <input
-            className="option-input"
-            type='text'
-            ref={ref => this.optionBInput = ref}
-            placeholder='Option B'
-          />
-        
-          <button className='btn'>Add</button>
-        </form>
+        {this.renderNewQuestionForm()}
       </div>
     );
   }
