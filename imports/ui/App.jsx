@@ -8,7 +8,6 @@ import Question from './Question.jsx';
  
 class App extends Component {
   renderQuestions() {
-    this.props.questions.forEach(console.log);
     return this.props.questions.map((question) => (
       <Question key={question._id} question={question} />
     ));
@@ -18,16 +17,16 @@ class App extends Component {
     event.preventDefault();
 
     Questions.insert({
-      text: this.inputQuestion.value.trim(),
-      a1: this.inputAnswerA.value.trim(),
-      a2: this.inputAnswerB.value.trim(),
+      text: this.questionInput.value.trim(),
+      optionA: this.optionAInput.value.trim(),
+      optionB: this.optionBInput.value.trim(),
       createdAt: new Date(), // current time
     });
 
     // Clear form
-    this.inputQuestion.value = '';
-    this.inputAnswerA.value = '';
-    this.inputAnswerB.value = '';
+    this.questionInput.value = '';
+    this.optionAInput.value = '';
+    this.optionBInput.value = '';
   }
  
   render() {
@@ -44,20 +43,20 @@ class App extends Component {
         <form className='new-question' onSubmit={this.handleSubmit.bind(this)} >
           <input
             type='text'
-            ref={ref => this.inputQuestion = ref}
+            ref={ref => this.questionInput = ref}
             placeholder='Type to add new questions'
           />
 
           <input
             type='text'
-            ref={ref => this.inputAnswerA = ref}
-            placeholder='Answer A'
+            ref={ref => this.optionAInput = ref}
+            placeholder='Option A'
           />
 
           <input
             type='text'
-            ref={ref => this.inputAnswerB = ref}
-            placeholder='Answer B'
+            ref={ref => this.optionBInput = ref}
+            placeholder='Option B'
           />
         
           <button className='btn'>Add</button>
@@ -73,8 +72,8 @@ App.propTypes = {
 
 App.defaultProps = {
   questions: [
-    { _id: 1, text: 'Are you a robot?', a1: 'Yes', a2: 'No' },
-    { _id: 2, text: 'Trump or Hillary?', a1: 'Trump', a2: 'Hillary' }
+    { _id: 1, text: 'Are you a Robot?', optionA: 'Yes', optionB: 'No' },
+    { _id: 2, text: 'Trump or Clinton?', optionA: 'Trump', optionB: 'Clinton' },
   ]
 };
  

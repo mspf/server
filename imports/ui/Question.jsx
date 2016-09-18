@@ -5,8 +5,8 @@ export default class Question extends Component {
     return (
       <li>
         {this.props.question.text}
-        <span className='answer'>A. {this.props.question.a1}</span>
-        <span className='answer'>B. {this.props.question.a2}</span>
+        <span className='answer'>A. {this.props.question.optionA}</span>
+        <span className='answer'>B. {this.props.question.optionB}</span>
       </li>
     );
   }
