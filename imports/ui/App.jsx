@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
  
-import { Questions } from '../api/Questions.js';
+import { Questions } from '../api/questions.js';
  
 import Question from './Question.jsx';
  
