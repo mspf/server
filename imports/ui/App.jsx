@@ -42,18 +42,21 @@ class App extends Component {
 
         <form className='new-question' onSubmit={this.handleSubmit.bind(this)} >
           <input
+            className="question-input"
             type='text'
             ref={ref => this.questionInput = ref}
             placeholder='Type to add new questions'
           />
 
           <input
+            className="option-input"
             type='text'
             ref={ref => this.optionAInput = ref}
             placeholder='Option A'
           />
 
           <input
+            className="option-input"
             type='text'
             ref={ref => this.optionBInput = ref}
             placeholder='Option B'
