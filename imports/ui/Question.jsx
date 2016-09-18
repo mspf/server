@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Meteor } from 'meteor/meteor';
 
 import { Questions } from '../api/questions.js'
  
@@ -10,7 +11,7 @@ export default class Question extends Component {
   }
 
   deleteThisQuestion() {
-    Questions.remove(this.props.question._id);
+    Meteor.call('questions.remove', this.props.question._id);
   }
 
   render() {

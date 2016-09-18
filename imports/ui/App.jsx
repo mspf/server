@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
- 
+import { Meteor } from 'meteor/meteor';
+
 import { Questions } from '../api/questions.js';
  
 import Question from './Question.jsx';
@@ -16,12 +17,11 @@ class App extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    Questions.insert({
-      text: this.questionInput.value.trim(),
-      optionA: this.optionAInput.value.trim(),
-      optionB: this.optionBInput.value.trim(),
-      createdAt: new Date(), // current time
-    });
+    const text = this.questionInput.value.trim();
+    const optionA = this.optionAInput.value.trim();
+    const optionB = this.optionBInput.value.trim();
+
+    Meteor.call('questions.insert', text, optionA, optionB);
 
     // Clear form
     this.questionInput.value = '';

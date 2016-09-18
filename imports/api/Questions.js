@@ -1,4 +1,6 @@
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
+import { check } from 'meteor/check';
  
 export const Questions = new Mongo.Collection('questions');
 
@@ -28,6 +30,25 @@ const QuestionSchema = new SimpleSchema({
 });
 
 Questions.attachSchema(QuestionSchema);
+
+Meteor.methods({
+  'questions.insert'(text, optionA, optionB) {
+    check(text, String);
+    check(optionA, String);
+    check(optionB, String);
+
+    Questions.insert({
+      text,
+      optionA,
+      optionB,
+      createdAt: new Date(),
+    });
+  },
+  'questions.remove'(questionId) {
+    check(questionId, String);
+    Questions.remove(questionId);
+  },
+});
 
 // debuging
 if (Meteor.isClient) {
