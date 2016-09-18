@@ -27,7 +27,7 @@ const QuestionSchema = new SimpleSchema({
   },
 });
 
-Questions.attachSchema(QuestionSchema)
+Questions.attachSchema(QuestionSchema);
 
 // debuging
 if (Meteor.isClient) {
