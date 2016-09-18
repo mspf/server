@@ -50,6 +50,13 @@ Meteor.methods({
   },
 });
 
+if (Meteor.isServer) {
+  // This code only runs on the server
+  Meteor.publish('questions', function questionsPublication() {
+    return Questions.find({}, { sort: { createdAt: -1 } });
+  });
+}
+
 // debuging
 if (Meteor.isClient) {
   window.Questions = Questions;

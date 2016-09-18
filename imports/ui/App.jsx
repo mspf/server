@@ -86,6 +86,8 @@ App.defaultProps = {
 };
  
 export default createContainer(() => {
+  Meteor.subscribe('questions');
+
   return {
     questions: Questions.find({}, { sort: { createdAt: -1 } }).fetch(),
   };
