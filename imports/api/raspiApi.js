@@ -13,8 +13,8 @@ Picker.route('/questions', function(params, req, res) {
   res.end(JSON.stringify(questions));
 });
 
-Picker.route('/results', function(params, req, res, next) {
-  assert(_.isArray(req.body))
+Picker.route('/answers', function(params, req, res, next) {
+  assert(_.isArray(req.body));
 
   req.body.forEach(answer => {
     Answers.insert({
