@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
+    "mongo": "meteor mongo",
     "deploy": ""
   },
   "dependencies": {
