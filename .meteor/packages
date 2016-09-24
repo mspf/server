@@ -22,3 +22,4 @@ react-meteor-data
 aldeed:simple-schema
 aldeed:collection2
 meteorhacks:picker
+twbs:bootstrap
