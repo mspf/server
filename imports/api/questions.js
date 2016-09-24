@@ -46,6 +46,11 @@ Meteor.methods({
     check(questionId, String);
     Questions.remove(questionId);
   },
+  'questions.priority.update'(questionId, priority) {
+    check(questionId, String);
+    check(priority, Number);
+    Questions.update({_id: questionId}, {$set: {priority}});
+  },
 });
 
 if (Meteor.isServer) {
