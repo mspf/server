@@ -13,20 +13,23 @@ class App extends Component {
       <Question key={question._id} question={question} />
     ));
   }
-
   handleSubmit(event) {
     event.preventDefault();
+    const self = this;
+    const data = {
+      text: self.questionInput.value.trim(),
+      optionA: self.optionAInput.value.trim(),
+      optionB: self.optionBInput.value.trim(),
+      priority: Number(self.selectPriority.value),
+    }
 
-    const text = this.questionInput.value.trim();
-    const optionA = this.optionAInput.value.trim();
-    const optionB = this.optionBInput.value.trim();
-
-    Meteor.call('questions.insert', text, optionA, optionB);
+    Meteor.call('questions.insert', data);
 
     // Clear form
     this.questionInput.value = '';
     this.optionAInput.value = '';
     this.optionBInput.value = '';
+    this.selectPriority.value = '';
   }
 
   renderNewQuestionForm() {
@@ -38,22 +41,28 @@ class App extends Component {
           ref={ref => this.questionInput = ref}
           placeholder='Type to add new questions'
         />
-
         <input
           className="option-input"
           type='text'
           ref={ref => this.optionAInput = ref}
           placeholder='Option A'
         />
-
         <input
           className="option-input"
           type='text'
           ref={ref => this.optionBInput = ref}
           placeholder='Option B'
         />
+        <select
+          className="select-input"
+          ref={ref => this.selectPriority = ref}>
+          <option value='0'>Urgent</option>
+          <option value='1'>High</option>
+          <option value='2'>Medium</option>
+          <option value='3'>Low</option>
+        </select>
 
-        <button className='btn'>Add</button>
+        <button className='btn btn-default'>Add</button>
       </form>);
   }
  

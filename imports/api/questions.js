@@ -23,6 +23,10 @@ const QuestionSchema = new SimpleSchema({
     min: 0,
     max: 15,
   },
+  priority: {
+    type: Number,
+    label: "Priority",
+  },
   createdAt: {
     type: Date,
     label: "when the question was created",
@@ -32,17 +36,11 @@ const QuestionSchema = new SimpleSchema({
 Questions.attachSchema(QuestionSchema);
 
 Meteor.methods({
-  'questions.insert'(text, optionA, optionB) {
-    check(text, String);
-    check(optionA, String);
-    check(optionB, String);
+  'questions.insert'(data) {
+    check(data, Object);
 
-    Questions.insert({
-      text,
-      optionA,
-      optionB,
-      createdAt: new Date(),
-    });
+    let obj = Object.assign(data, {createdAt: new Date()});
+    Questions.insert(obj);
   },
   'questions.remove'(questionId) {
     check(questionId, String);

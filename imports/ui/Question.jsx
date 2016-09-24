@@ -15,15 +15,43 @@ export default class Question extends Component {
   }
 
   render() {
+    let priority = '';
+    switch (this.props.question.priority) {
+      case 0:
+        priority = "Urgent";
+        break;
+      case 1:
+        priority = "High";
+        break;
+      case 2:
+        priority = "Medium";
+        break;
+      case 3:
+        priority = "Low";
+        break;
+    }
+    console.log(this.props.question.priority, priority);
     return (
       <li>
-        <button className="delete" onClick={this.deleteThisQuestion}>
-          &times;
-        </button>
-
-        {this.props.question.text}
-        <span className='answer'>A. {this.props.question.optionA}</span>
-        <span className='answer'>B. {this.props.question.optionB}</span>
+        <div className="row">
+          <div className="col-lg-2">
+            <span className='priority'>{priority}</span>
+          </div>
+          <div className="col-lg-4">
+            {this.props.question.text}
+          </div>
+          <div className="col-lg-2">
+            <span className='answer'>A. {this.props.question.optionA}</span>
+          </div>
+          <div className="col-lg-2">
+            <span className='answer'>B. {this.props.question.optionB}</span>
+          </div>
+          <div className="col-lg-2">
+            <button className="delete" onClick={this.deleteThisQuestion}>
+              &times;
+            </button>
+          </div>
+        </div>
       </li>
     );
   }
