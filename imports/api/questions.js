@@ -39,8 +39,8 @@ Meteor.methods({
   'questions.insert'(data) {
     check(data, Object);
 
-    let obj = Object.assign(data, {createdAt: new Date()});
-    Questions.insert(obj);
+    Object.assign(data, {createdAt: new Date()});
+    Questions.insert(data);
   },
   'questions.remove'(questionId) {
     check(questionId, String);
@@ -50,6 +50,11 @@ Meteor.methods({
     check(questionId, String);
     check(priority, Number);
     Questions.update({_id: questionId}, {$set: {priority}});
+  },
+  'questions.content.update'(questionId, data) {
+    check(questionId, String);
+    check(data, Object);
+    Questions.update({_id: questionId}, {$set: data});
   },
 });
 
