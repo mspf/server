@@ -1,29 +1,28 @@
 module.exports = {
   servers: {
     one: {
-      host: '1.2.3.4',
+      host: 'XXXXXXXXXXXXXX',
       username: 'root',
-      password: ''
+      password: 'XXXXXXXXXX'
       // pem:
       // or leave blank for authenticate from ssh-agent
     }
   },
 
   meteor: {
-    name: 'VoteWithFeet',
+    name: 'VoteWithYourFeet',
     path: './',
     servers: {
       one: {}
     },
     buildOptions: {
-      serverOnly: true,
     },
     env: {
-      ROOT_URL: 'app.com',
+      ROOT_URL: 'http://138.68.46.208',
       MONGO_URL: 'mongodb://localhost/meteor'
     },
 
-    //dockerImage: 'kadirahq/meteord'
+    dockerImage: 'abernix/meteord:base',
     deployCheckWaitTime: 60
   },
 
