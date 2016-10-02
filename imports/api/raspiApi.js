@@ -20,7 +20,7 @@ Picker.route('/answers', function(params, req, res, next) {
     Answers.insert({
       questionId: answer.questionId,
       answer: answer.answer,
-      createdAt: new Date(answer.createdAt),
+      createdAt: new Date(parseInt(answer.createdAt)),
     });
   });
 
