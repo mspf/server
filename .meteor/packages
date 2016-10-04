@@ -24,3 +24,5 @@ aldeed:collection2
 twbs:bootstrap
 meteorhacks:picker
 ultimatejs:tracker-react
+accounts-base
+accounts-password

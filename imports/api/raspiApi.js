@@ -14,7 +14,7 @@ Picker.route('/questions', function(params, req, res) {
 });
 
 Picker.route('/answers', function(params, req, res, next) {
-  assert(_.isArray(req.body));
+  //assert(_.isArray(req.body));
 
   req.body.forEach(answer => {
     Answers.insert({

@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Questions } from '../api/questions.js'
 
 import InlineTextEditor from './inline_text_editor.jsx'
- 
+
 export default class Question extends Component {
   constructor(props) {
     super(props);
@@ -13,17 +13,29 @@ export default class Question extends Component {
     this.updateText = this.updateText.bind(this);
   }
   updatePriority(e) {
-    Meteor.call('questions.priority.update',
-      this.props.question._id,
-      Number(e.currentTarget.value));
+    if (Meteor.userId()) {
+      Meteor.call('questions.priority.update',
+        this.props.question._id,
+        Number(e.currentTarget.value));
+    } else {
+      alert('Please login');
+    }
   }
   deleteThisQuestion() {
-    Meteor.call('questions.remove', this.props.question._id);
+    if (Meteor.userId()) {
+      Meteor.call('questions.remove', this.props.question._id);
+    } else {
+      alert('Please login');
+    }
   }
   updateText(type, content) {
-    Meteor.call('questions.content.update',
-      this.props.question._id,
-      {[type]: content});
+    if (Meteor.userId()) {
+      Meteor.call('questions.content.update',
+        this.props.question._id,
+        {[type]: content});
+    } else {
+      alert('Please login');
+    }
   }
   render() {
     let priority = this.props.question.priority || '';
@@ -66,7 +78,7 @@ export default class Question extends Component {
     );
   }
 }
- 
+
 Question.propTypes = {
   question: PropTypes.object.isRequired,
 };
