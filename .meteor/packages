@@ -21,5 +21,6 @@ shell-server@0.2.1            # Server-side component of the `meteor shell` comm
 react-meteor-data
 aldeed:simple-schema
 aldeed:collection2
-meteorhacks:picker
 twbs:bootstrap
+meteorhacks:picker
+ultimatejs:tracker-react

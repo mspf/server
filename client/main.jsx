@@ -1,9 +1,23 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
- 
-import App from '../imports/ui/App.jsx';
- 
+
+import App from '/imports/ui/App.jsx';
+import Results from '/imports/ui/results.jsx';
+
+import { Router, browserHistory, Route, IndexRoute } from 'react-router';
+
+
+
 Meteor.startup(() => {
-  render(<App />, document.getElementById('render-target'));
+  Meteor.subscribe('questions');
+
+  render((
+    <Router history={browserHistory} >
+      <Route path="/" component={Results} />
+      <Route path="/admin" component={App} />
+      <Route path="*" component={Results} />
+    </Router>
+  ), document.getElementById('render-target'));
+
 });

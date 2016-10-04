@@ -6,10 +6,16 @@ import { Meteor } from 'meteor/meteor';
 import { Questions } from '../api/questions.js';
 import Question from './Question.jsx'; //component
 import QuestionForm from './question_form.jsx';
- 
-class App extends Component {
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
+
+
+class App extends TrackerReact(Component) {
+  constructor(props) {
+    super(props);
+  }
   renderQuestions() {
-    return this.props.questions.map((question) => (
+    let questions = Questions.find().fetch();
+    return questions.map((question) => (
       <Question key={question._id} question={question} />
     ));
   }
@@ -19,7 +25,7 @@ class App extends Component {
         <header>
           <h1>VWYF Questions</h1>
         </header>
- 
+
         <ul>
           {this.renderQuestions()}
         </ul>
@@ -40,7 +46,10 @@ App.defaultProps = {
     { _id: 2, text: 'Trump or Clinton?', optionA: 'Trump', optionB: 'Clinton' },
   ]
 };
- 
+
+export default App;
+
+/*
 export default createContainer(() => {
   Meteor.subscribe('questions');
 
@@ -48,3 +57,4 @@ export default createContainer(() => {
     questions: Questions.find({}, { sort: { createdAt: -1 } }).fetch(),
   };
 }, App);
+*/

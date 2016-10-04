@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
- 
+
 export const Questions = new Mongo.Collection('questions');
 
 // Define the schema
@@ -33,13 +33,13 @@ const QuestionSchema = new SimpleSchema({
   },
 });
 
-Questions.attachSchema(QuestionSchema);
+//Questions.attachSchema(QuestionSchema);
 
 Meteor.methods({
   'questions.insert'(data) {
     check(data, Object);
 
-    Object.assign(data, {createdAt: new Date()});
+    Object.assign(data, {createdAt: new Date(), count: {A: 0, B: 0} });
     Questions.insert(data);
   },
   'questions.remove'(questionId) {

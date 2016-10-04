@@ -22,6 +22,7 @@ Picker.route('/answers', function(params, req, res, next) {
       answer: answer.answer,
       createdAt: new Date(parseInt(answer.createdAt)),
     });
+    Questions.update({_id: answer.questionId}, {$inc: {['count.' + answer.answer]: 1}});
   });
 
   res.writeHead(200, {'Content-Type': 'application/json'});
