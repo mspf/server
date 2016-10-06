@@ -11,6 +11,7 @@ export default class Question extends Component {
     this.deleteThisQuestion = this.deleteThisQuestion.bind(this);
     this.updatePriority = this.updatePriority.bind(this);
     this.updateText = this.updateText.bind(this);
+    this.resetQuestion = this.resetQuestion.bind(this);
   }
   updatePriority(e) {
     Meteor.call('questions.priority.update',
@@ -18,12 +19,19 @@ export default class Question extends Component {
       Number(e.currentTarget.value));
   }
   deleteThisQuestion() {
-    Meteor.call('questions.remove', this.props.question._id);
+    if (confirm("delete this question???")) {
+      Meteor.call('questions.remove', this.props.question._id);
+    }
   }
   updateText(type, content) {
     Meteor.call('questions.content.update',
       this.props.question._id,
       {[type]: content});
+  }
+  resetQuestion() {
+    if (confirm("Reset this question???")) {
+      Meteor.call('questions.reset', this.props.question._id);
+    }
   }
   render() {
     let priority = this.props.question.priority || '';
@@ -57,7 +65,9 @@ export default class Question extends Component {
                               updateMethod={this.updateText} />
           </div>
           <div className="col-md-1">
-            <span>{this.props.question.count.A} {'/'} {this.props.question.count.B}</span>
+            <button className="btn" onClick={this.resetQuestion}>
+              {this.props.question.count.A} {'/'} {this.props.question.count.B}
+            </button>
           </div>
           <div className="col-md-1">
             <button className="delete" onClick={this.deleteThisQuestion}>

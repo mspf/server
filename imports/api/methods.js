@@ -20,6 +20,7 @@ Meteor.methods({
     }
     check(questionId, String);
     Questions.remove(questionId);
+    Answers.remove({questionId: questionId});
   },
   'questions.priority.update'(questionId, priority) {
     if (!this.userId) {
@@ -37,5 +38,13 @@ Meteor.methods({
     check(data, Object);
     Questions.update({_id: questionId}, {$set: data});
   },
+  'questions.reset'(questionId) {
+    if (!this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    Questions.update({_id: questionId}, {$set: {'count.A': 0, 'count.B': 0}});
+    Answers.remove({questionId: questionId});
+  }
 });
 
