@@ -22,6 +22,7 @@ Picker.route('/answers', function(params, req, res, next) {
       createdAt: new Date(parseInt(answer.createdAt)),
     });
     Questions.update({_id: answer.questionId}, {$inc: {['count.' + answer.answer]: 1}});
+    Questions.update({_id: answer.questionId}, {$set: {'lastUpdatedAt': new Date()}});
   });
 
 	tweetNewAnswers(req.body);

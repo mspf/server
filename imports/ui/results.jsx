@@ -10,11 +10,11 @@ class ResultItem extends React.Component {
   componentDidMount() {
     this.renderPieChartWithLegend(this.props);
   }
+  componentDidUpdate() {
+    this.renderPieChartWithLegend(this.props);
+  }
   componentWillReceiveProps(nextProps) {
     this.renderPieChartWithLegend(nextProps);
-  }
-  shouldComponentUpdate() {
-    return false;
   }
   renderPieChartWithLegend(props) {
     this.chart && this.chart.destroy();
@@ -76,7 +76,9 @@ const ResultsRow = ({questions}) => (
 
 class Results extends TrackerReact(React.Component) {
   renderResults() {
-    let questions = Questions.find().fetch();
+    let questions = Questions.find().fetch()
+      .filter(q => q.count.A !== 0 || q.count.B !== 0)
+      .sort((q1, q2) => q2.lastUpdatedAt - q1.lastUpdatedAt);
     return _.chunk(questions, 3).map(
       (threeQuestions, i) => <ResultsRow key={i} questions={threeQuestions} />);
   }
