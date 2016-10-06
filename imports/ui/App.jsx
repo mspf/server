@@ -2,12 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-
-import { Questions } from '../api/questions.js';
-import Question from './Question.jsx'; //component
-import QuestionForm from './question_form.jsx';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
+import { Questions } from '../api/questions.js';
+import Question from './Question.jsx';
+import QuestionForm from './question_form.jsx';
 
 class App extends TrackerReact(Component) {
   constructor(props) {
@@ -41,20 +40,7 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  questions: [
-    { _id: 1, text: 'Are you a Robot?', optionA: 'Yes', optionB: 'No' },
-    { _id: 2, text: 'Trump or Clinton?', optionA: 'Trump', optionB: 'Clinton' },
-  ]
+  questions: []
 };
 
 export default App;
-
-/*
-export default createContainer(() => {
-  Meteor.subscribe('questions');
-
-  return {
-    questions: Questions.find({}, { sort: { createdAt: -1 } }).fetch(),
-  };
-}, App);
-*/
