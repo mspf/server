@@ -20,9 +20,9 @@ class App extends TrackerReact(Component) {
   }
   render() {
     return (
-      <div className='container'>
+      <div className='admin container'>
         <header>
-          <h1>VWYF Questions</h1>
+          <h1>MSPF VWYF Admin</h1>
         </header>
 
         <QuestionForm />
