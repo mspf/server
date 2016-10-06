@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import '../imports/api/questions.js';
 import '../imports/api/raspiApi.js';
+import '../imports/api/methods.js';
 import { Accounts } from 'meteor/accounts-base';
 
 Meteor.startup(() => {
