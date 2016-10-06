@@ -17,6 +17,7 @@ class ResultItem extends React.Component {
     return false;
   }
   renderPieChartWithLegend(props) {
+    this.chart && this.chart.destroy();
     // global options variable
     var options = {
       responsive: true,
@@ -41,10 +42,9 @@ class ResultItem extends React.Component {
       },
     ]
 
-    // Property Type Distribution
-    var propertyTypes = new Chart(ctxPTD).Pie(dataPTD, options);
+    this.chart = new Chart(ctxPTD).Pie(dataPTD, options);
     // pie chart legend
-    $(this.legend).html(propertyTypes.generateLegend());
+    $(this.legend).html(this.chart.generateLegend());
   }
 
   render() {
