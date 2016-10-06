@@ -28,7 +28,7 @@ export default class Question extends Component {
   render() {
     let priority = this.props.question.priority || '';
     return (
-      <li>
+      <li className='question'>
         <div className="row">
           <div className="col-md-2">
             <select value={priority.toString()}
@@ -56,7 +56,10 @@ export default class Question extends Component {
                               prefix={'B. '}
                               updateMethod={this.updateText} />
           </div>
-          <div className="col-md-2">
+          <div className="col-md-1">
+            <span>{this.props.question.count.A} {'/'} {this.props.question.count.B}</span>
+          </div>
+          <div className="col-md-1">
             <button className="delete" onClick={this.deleteThisQuestion}>
               &times;
             </button>

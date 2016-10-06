@@ -14,7 +14,7 @@ Meteor.startup(() => {
 
   render((
     <Router history={browserHistory} >
-      <Route path="/" component={HomeView} />
+      <Route path="/" component={Results} />
       <Route path="/results" component={Results} />
       <Route path="/admin" component={App} />
       <Route path="*" component={Results} />

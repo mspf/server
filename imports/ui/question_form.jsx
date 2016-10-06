@@ -22,7 +22,6 @@ class QuestionForm extends React.Component {
     this.questionInput.value = '';
     this.optionAInput.value = '';
     this.optionBInput.value = '';
-    this.selectPriority.value = '';
   }
   render() {
     return (
