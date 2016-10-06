@@ -3,22 +3,26 @@ import _ from 'lodash'
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { Questions } from '../api/questions.js';
 
+const GOOGLE_FORM_LINK = 'https://goo.gl/forms/lf9dBVNkjt0ixVmn2';
+
 const ResultItem = ({question}) =>
   (<div className='col-md-4'>
     <div className='result-wrapper'>
       <h1>{question.text}</h1>
       <div className="">
-        <span>{question.optionA}</span>
-        <span>{question.optionB}</span>
-        {question.count && question.count.A || 0}
-        {question.count && question.count.B || 0}
+        <span>{question.optionA}: {question.count && question.count.A || 0}</span>
+        <span>{question.optionB}: {question.count && question.count.B || 0}</span>
       </div>
     </div>
   </div>);
 
 const ResultsRow = ({questions}) => (
-  <div className='row results-row'>
-    {questions.map(question => <ResultItem key={question.id} question={question} />)}
+  <div className='results-row'>
+    <div className='container'>
+      <div className='row'>
+        {questions.map(question => <ResultItem key={question.id} question={question} />)}
+      </div>
+    </div>
   </div>);
 
 class Results extends TrackerReact(React.Component) {
@@ -33,9 +37,10 @@ class Results extends TrackerReact(React.Component) {
     return (
       <div className="main container-fluid">
         <header>
-          <a href='http://test.com/link_to_google_form' target='_blank'>SUBMIT QUESTIONS</a>
+          <a className='title' href='/' target='_blank'>#VoteWithYourFeet</a>
+          <a className='submit' href={GOOGLE_FORM_LINK} target='_blank'>SUBMIT QUESTIONS</a>
         </header>
-        <div className='container all-results-wrapper'>
+        <div className='all-results-wrapper'>
           {this.renderResults()}
         </div>
       </div>
