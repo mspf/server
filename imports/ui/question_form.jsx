@@ -51,6 +51,7 @@ class QuestionForm extends React.Component {
         />
         <select
           className="select-input"
+          defaultValue='2'
           ref={ref => this.selectPriority = ref}>
           <option value='0'>Urgent</option>
           <option value='1'>High</option>
