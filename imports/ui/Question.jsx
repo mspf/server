@@ -13,29 +13,17 @@ export default class Question extends Component {
     this.updateText = this.updateText.bind(this);
   }
   updatePriority(e) {
-    if (Meteor.userId()) {
-      Meteor.call('questions.priority.update',
-        this.props.question._id,
-        Number(e.currentTarget.value));
-    } else {
-      alert('Please login');
-    }
+    Meteor.call('questions.priority.update',
+      this.props.question._id,
+      Number(e.currentTarget.value));
   }
   deleteThisQuestion() {
-    if (Meteor.userId()) {
-      Meteor.call('questions.remove', this.props.question._id);
-    } else {
-      alert('Please login');
-    }
+    Meteor.call('questions.remove', this.props.question._id);
   }
   updateText(type, content) {
-    if (Meteor.userId()) {
-      Meteor.call('questions.content.update',
-        this.props.question._id,
-        {[type]: content});
-    } else {
-      alert('Please login');
-    }
+    Meteor.call('questions.content.update',
+      this.props.question._id,
+      {[type]: content});
   }
   render() {
     let priority = this.props.question.priority || '';

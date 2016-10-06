@@ -16,11 +16,7 @@ class QuestionForm extends React.Component {
       priority: Number(self.selectPriority.value),
     }
 
-    if (Meteor.userId()) {
-      Meteor.call('questions.insert', data);
-    } else {
-      alert('Please login');
-    }
+    Meteor.call('questions.insert', data);
 
     // Clear form
     this.questionInput.value = '';
