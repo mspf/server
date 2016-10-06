@@ -30,36 +30,46 @@ class QuestionForm extends React.Component {
   }
   render() {
     return (
-      <form className='new-question' onSubmit={this.handleSubmit} >
-        <input
-          className="question-input"
-          type='text'
-          ref={ref => this.questionInput = ref}
-          placeholder='Type to add new questions'
-        />
-        <input
-          className="option-input"
-          type='text'
-          ref={ref => this.optionAInput = ref}
-          placeholder='Option A'
-        />
-        <input
-          className="option-input"
-          type='text'
-          ref={ref => this.optionBInput = ref}
-          placeholder='Option B'
-        />
-        <select
-          className="select-input"
-          defaultValue='2'
-          ref={ref => this.selectPriority = ref}>
-          <option value='0'>Urgent</option>
-          <option value='1'>High</option>
-          <option value='2'>Medium</option>
-          <option value='3'>Low</option>
-        </select>
+      <form className='new-question row' onSubmit={this.handleSubmit} >
 
-        <button className='btn btn-default'>Add</button>
+        <div className="col-md-2">
+          <select
+            defaultValue='2'
+            ref={ref => this.selectPriority = ref}>
+            <option value='0'>Urgent</option>
+            <option value='1'>High</option>
+            <option value='2'>Medium</option>
+            <option value='3'>Low</option>
+          </select>
+        </div>
+
+        <div className="col-md-4">
+          <input
+            type='text'
+            ref={ref => this.questionInput = ref}
+            placeholder='Type to add new questions'
+          />
+        </div>
+
+        <div className="col-md-2">
+          <input
+            type='text'
+            ref={ref => this.optionAInput = ref}
+            placeholder='Option A'
+          />
+        </div>
+
+        <div className="col-md-2">
+          <input
+            type='text'
+            ref={ref => this.optionBInput = ref}
+            placeholder='Option B'
+          />
+        </div>
+
+        <div className='col-md-2'>
+          <button className='btn btn-default add-btn'>Add</button>
+        </div>
       </form>
     );
   }

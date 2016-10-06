@@ -42,7 +42,7 @@ export default class Question extends Component {
     return (
       <li>
         <div className="row">
-          <div className="col-lg-2">
+          <div className="col-md-2">
             <select value={priority.toString()}
                     onChange={this.updatePriority} >
               <option value='0'>Urgent</option>
@@ -51,24 +51,24 @@ export default class Question extends Component {
               <option value='3'>Low</option>
             </select>
           </div>
-          <div className="col-lg-4">
+          <div className="col-md-4">
             <InlineTextEditor text={this.props.question.text}
                               type={'text'}
                               updateMethod={this.updateText} />
           </div>
-          <div className="col-lg-2">
+          <div className="col-md-2">
             <InlineTextEditor text={this.props.question.optionA}
                               type={'optionA'}
                               prefix={'A. '}
                               updateMethod={this.updateText} />
           </div>
-          <div className="col-lg-2">
+          <div className="col-md-2">
             <InlineTextEditor text={this.props.question.optionB}
                               type={'optionB'}
                               prefix={'B. '}
                               updateMethod={this.updateText} />
           </div>
-          <div className="col-lg-2">
+          <div className="col-md-2">
             <button className="delete" onClick={this.deleteThisQuestion}>
               &times;
             </button>

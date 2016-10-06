@@ -3,54 +3,33 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { Questions } from '../api/questions.js';
 
 const ResultItem = ({question}) =>
-  (<li>
+  (<div className="results-wrapper col-md-4">
+      <h1>{question.text}</h1>
       <div className="row">
-        <div className="col-lg-4">
-          {question.text}
-        </div>
-        <div className="col-lg-8">
-          <div className="col-lg-12">
-            <div className="col-lg-9">
-              {question.optionA}
-            </div>
-            <div className="col-lg-3">
-              {question.count && question.count.A || 0}
-            </div>
-          </div>
-          <div className="col-lg-12">
-            <div className="col-lg-9">
-              {question.optionB}
-            </div>
-            <div className="col-lg-3">
-              {question.count && question.count.B || 0}
-            </div>
-          </div>
-        </div>
+          <span>{question.optionA}</span>
+          <span>{question.optionB}</span>
       </div>
-  </li>);
+      <div className="row">
+          {question.count && question.count.A || 0}
+          {question.count && question.count.B || 0}
+      </div>
+  </div>);
 
 class Results extends TrackerReact(React.Component) {
+
   renderResults() {
     let questions = Questions.find().fetch();
-
-    console.log(questions);
-
-    return questions.map((question) => <ResultItem question={question} />);
+    return questions.map(question => <ResultItem key={question.id} question={question} />);
   }
+
   render() {
-    let results = this.renderResults();
-    console.log(results);
     return (
       <div className="container">
         <header>
-          <h1>VWYF Answers</h1>
+          <a href='http://test.com/link_to_google_form' target='_blank'>SUBMIT QUESTIONS</a>
         </header>
-        <ul style={{
-            listStylePosition: 'inside',
-            borderWidth: '1px',
-            borderColor: '#9d9d9d',
-            borderStyle: 'solid'}}>
-          {results}
+        <ul>
+          {this.renderResults()}
         </ul>
       </div>
     );

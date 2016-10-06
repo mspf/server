@@ -25,11 +25,11 @@ class App extends TrackerReact(Component) {
           <h1>VWYF Questions</h1>
         </header>
 
+        <QuestionForm />
+
         <ul>
           {this.renderQuestions()}
         </ul>
-
-        <QuestionForm />
       </div>
     );
   }
