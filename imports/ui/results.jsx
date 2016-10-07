@@ -6,6 +6,13 @@ import { Questions } from '../api/questions.js';
 const GOOGLE_FORM_LINK = 'https://goo.gl/forms/lf9dBVNkjt0ixVmn2';
 const TWITTER_PAGE_LINK = 'https://twitter.com/vwyf1x1';
 
+function getQuestionText(question) {
+  if (question.text === '?') {
+    return `${question.optionA} or ${question.optionB}?`
+  }
+  return question.text;
+}
+
 class ResultItem extends React.Component {
   componentDidMount() {
     this.renderPieChartWithLegend(this.props);
@@ -51,7 +58,7 @@ class ResultItem extends React.Component {
     return (
       <div className='col-md-4'>
         <div className='result-wrapper'>
-          <h1>{this.props.question.text}</h1>
+          <h1>{getQuestionText(this.props.question)}</h1>
           <div className='chart'>
             <canvas className='pie' ref={ref => this.pieChart = ref} />
             <div ref={ref => this.legend = ref} />

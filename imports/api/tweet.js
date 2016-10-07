@@ -11,6 +11,13 @@ const TwitterClient = new Twit({
   timeout_ms: 60 * 1000,
 });
 
+function getQuestionText(question) {
+  if (question.text === '?') {
+    return `${question.optionA} or ${question.optionB}?`
+  }
+  return question.text;
+}
+
 const hashtag = '#VoteWithYourFeet ';
 
 function tweetQuestionStatus(questionId) {
@@ -18,7 +25,7 @@ function tweetQuestionStatus(questionId) {
   if (question) {
     let status = hashtag +
       'Q: ' +
-      lodash.truncate(question.text, {length: 43}) +
+      lodash.truncate(getQuestionText(question), {length: 43}) +
       '? ' +
       lodash.truncate(question.optionA, {length: 20}) +
       ': ' +
