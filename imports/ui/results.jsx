@@ -37,13 +37,13 @@ class ResultItem extends React.Component {
     var ctxPTD = $(this.pieChart).get(0).getContext("2d");
     var dataPTD = [
       {
-        label: props.question.optionA,
+        label: `${props.question.optionA}: ${props.question.count.A}`,
         color: "rgba(74, 74, 74, 1)",
         highlight: "rgba(74, 74, 74, .9)",
         value: props.question.count.A,
       },
       {
-        label: props.question.optionB,
+        label: `${props.question.optionB}: ${props.question.count.B}`,
         color: "rgba(252, 238, 31, 1)",
         highlight: "rgba(252, 238, 31, .9)",
         value: props.question.count.B,
