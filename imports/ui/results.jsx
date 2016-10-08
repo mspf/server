@@ -27,6 +27,7 @@ class ResultItem extends React.Component {
     this.chart && this.chart.destroy();
     // global options variable
     var options = {
+      animation: false,
       responsive: true,
       scaleBeginAtZero: true,
       // you don't have to define this here, it exists inside the global defaults
