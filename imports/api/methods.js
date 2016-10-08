@@ -45,6 +45,9 @@ Meteor.methods({
 
     Questions.update({_id: questionId}, {$set: {'count.A': 0, 'count.B': 0}});
     Answers.remove({questionId: questionId});
+  },
+  'answers.count'() {
+    return Answers.find().count();
   }
 });
 

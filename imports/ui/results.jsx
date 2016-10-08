@@ -83,6 +83,20 @@ const ResultsRow = ({questions}) => (
   </div>);
 
 class Results extends TrackerReact(React.Component) {
+  constructor() {
+    super();
+
+    this.state = {numOfVotes: 0};
+  }
+
+  componentDidMount() {
+    Meteor.call('answers.count', (error, result) => {
+      if(result) {
+        this.setState({numOfVotes: result});
+      }
+    });
+  }
+
   renderResults() {
     let questions = Questions.find().fetch()
       .filter(q => q.count.A !== 0 || q.count.B !== 0)
@@ -91,11 +105,22 @@ class Results extends TrackerReact(React.Component) {
       (threeQuestions, i) => <ResultsRow key={i} questions={threeQuestions} />);
   }
 
+  getTitle() {
+    const tweet = <a href={TWITTER_PAGE_LINK} target='_blank'>#VoteWithYourFeet</a>;
+    if (!this.state.numOfVotes) {
+      return tweet;
+    }
+    return <span>
+      <b>{this.state.numOfVotes}</b> people {tweet}
+    </span>
+  }
+
   render() {
     return (
       <div className="main container-fluid">
         <header>
-          <a className='title' href={TWITTER_PAGE_LINK} target='_blank'>#VoteWithYourFeet</a>
+          <span className='title'>{this.getTitle()}</span>
+          <span className='location'>Live at 4th and Market, San Francisco</span>
           <a className='submit' href={GOOGLE_FORM_LINK} target='_blank'>SUBMIT QUESTIONS</a>
         </header>
         <div className='all-results-wrapper'>
