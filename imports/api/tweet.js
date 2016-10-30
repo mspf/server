@@ -25,7 +25,7 @@ function tweetQuestionStatus(questionId) {
   if (question) {
     let status = hashtag +
       'Q: ' +
-      lodash.truncate(getQuestionText(question), {length: 43}) +
+      lodash.truncate(getQuestionText(question), {length: 32}) +
       '? ' +
       lodash.truncate(question.optionA, {length: 20}) +
       ': ' +
@@ -34,7 +34,7 @@ function tweetQuestionStatus(questionId) {
       lodash.truncate(question.optionB, {length: 20}) +
       ': ' +
       (question.count && question.count.B || '0') +
-      ' vwyf.1x1.cm';
+      ' VoteWithYourFeet.org';
 
     TwitterClient.post('statuses/update', {status}, (err, data, res) => {
       console.log('success post to twitter');
