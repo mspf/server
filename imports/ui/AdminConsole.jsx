@@ -6,7 +6,7 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 import { Questions } from '../api/questions.js';
 import Question from './Question.jsx';
-import QuestionForm from './question_form.jsx';
+import QuestionForm from './QuestionForm.jsx';
 
 class App extends TrackerReact(Component) {
   constructor(props) {

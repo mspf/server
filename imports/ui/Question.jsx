@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 
-import { Questions } from '../api/questions.js'
+import { Questions } from '../api/questions.js';
 
-import InlineTextEditor from './inline_text_editor.jsx'
+import InlineTextEditor from './InlineTextEditor.jsx';
 
 export default class Question extends Component {
   constructor(props) {
