@@ -8,16 +8,18 @@ import { Questions } from '../api/questions.js';
 import Question from './Question.jsx';
 import QuestionForm from './QuestionForm.jsx';
 
-class App extends TrackerReact(Component) {
+class AdminConsole extends TrackerReact(Component) {
   constructor(props) {
     super(props);
   }
+
   renderQuestions() {
     let questions = Questions.find().fetch();
     return questions.map((question) => (
       <Question key={question._id} question={question} />
     ));
   }
+
   render() {
     return (
       <div className='admin container'>
@@ -35,12 +37,12 @@ class App extends TrackerReact(Component) {
   }
 }
 
-App.propTypes = {
+AdminConsole.propTypes = {
   questions: PropTypes.array.isRequired,
 };
 
-App.defaultProps = {
+AdminConsole.defaultProps = {
   questions: []
 };
 
-export default App;
+export default AdminConsole;
