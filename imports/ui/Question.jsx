@@ -41,10 +41,11 @@ export default class Question extends Component {
           <div className="col-md-2">
             <select value={priority.toString()}
                     onChange={this.updatePriority} >
-              <option value='0'>Urgent</option>
-              <option value='1'>High</option>
-              <option value='2'>Medium</option>
-              <option value='3'>Low</option>
+              <option value='0'>Urgent 5x</option>
+              <option value='1'>High 3x</option>
+              <option value='2'>Medium 2x</option>
+              <option value='3'>Low 1x</option>
+              <option value='4'>Turned Off</option>
             </select>
           </div>
           <div className="col-md-4">

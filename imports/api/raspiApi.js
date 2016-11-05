@@ -9,7 +9,9 @@ Picker.middleware(bodyParser.json());
 Picker.middleware(bodyParser.urlencoded({ extended: false }));
 
 Picker.route('/questions', function(params, req, res) {
-  const questions = Questions.find({}, { sort: { createdAt: -1 } }).fetch();
+  const questions = Questions.find(
+    {priority: {$lt: 4}}, { sort: { createdAt: -1 } }
+  ).fetch();
   res.writeHead(200, {'Content-Type': 'application/json'});
   res.end(JSON.stringify(questions));
 });

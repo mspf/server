@@ -98,9 +98,9 @@ class Results extends TrackerReact(React.Component) {
   }
 
   renderResults() {
-    let questions = Questions.find().fetch()
-      .filter(q => q.count.A !== 0 || q.count.B !== 0)
-      .sort((q1, q2) => q2.lastUpdatedAt - q1.lastUpdatedAt);
+    let questions = Questions.find(
+      {priority: {$lt: 4}}, {sort: {lastUpdatedAt: -1}}
+    ).fetch();
     return _.chunk(questions, 3).map(
       (threeQuestions, i) => <ResultsRow key={i} questions={threeQuestions} />);
   }
