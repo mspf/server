@@ -14,7 +14,7 @@ class AdminConsole extends TrackerReact(Component) {
   }
 
   renderQuestions() {
-    let questions = Questions.find().fetch();
+    let questions = Questions.find().fetch().reverse();
     return questions.map((question) => (
       <Question key={question._id} question={question} />
     ));
