@@ -130,22 +130,23 @@ header .navbar .navbar-collapse {
   width: 100%;
   text-align: center;
   display: block;
-  padding: 38px 10px 10px;
+  padding: 48px 10px 20px;
 }
 
 .section-title a, .section-title a:hover {
   color: #4A4A4A;
   cursor: pointer;
   text-decoration: none;
+  font-size: 30px;
 }
 
 .section-title::after {
   content: "";
   display: block;
   background-color: #FCEE1F;
-  width: 120px;
-  height: 10px;
-  margin: 18px auto 0;
+  width: 130px;
+  height: 9px;
+  margin: 20px auto 24px;
 }
 
 .intro {
@@ -158,6 +159,12 @@ header .navbar .navbar-collapse {
   margin: 0 0 20px;
   font-size: 16px;
   font-weight: 300;
+}
+
+.twitter-wrapper {
+  max-width: 700px;
+  display: block;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 768px) {

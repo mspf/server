@@ -135,6 +135,19 @@ function Highlights() {
   );
 };
 
+function TwitterTimeLine() {
+  return (
+    <div className='twitter-wrapper'>
+      <a className='twitter-timeline'
+        data-width='800'
+        data-height='260'
+        data-theme='light'
+        data-link-color='#2B7BB9'
+        href='https://twitter.com/vwyf1x1'></a>
+    </div>
+  );
+}
+
 const INTRO_1 = `Have a question for your fellow citizens and wonder how they'd react? We made an art installation for just that! "Vote With Your Feet" is a public installation that asks questions for citizens, and get answers from citizens.`;
 
 const INTRO_2 = `Two doorways stand in the middle of the sidewalk, with a question displayed on a sign above them. Each door stands for an answer.`;
@@ -155,16 +168,7 @@ export default class HomeView extends React.Component {
         <Highlights />
 
         <SectionTitle anchor='votes' title='THE VOTES' />
-        <div className='container home-wrapper'>
-          <a className='twitter-timeline'
-            data-width='800'
-            data-height='260'
-            data-theme='light'
-            data-link-color='#2B7BB9'
-            href='https://twitter.com/vwyf1x1'></a>
-        </div>
-
-
+        <TwitterTimeLine />
 
         <SectionTitle anchor='team' title='THE TEAM' />
 
