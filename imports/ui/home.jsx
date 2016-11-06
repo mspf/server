@@ -45,7 +45,95 @@ function SectionTitle({anchor, title}) {
     </h1>
   );
 };
+
+function CarouselItem(props) {
+  return (
+    <div className={'item' + (props.isActive ? ' active' : '')}>
+      <img src={props.src} alt={props.title} />
+      <div className='carousel-caption'>
+        <h1>{props.title}</h1>
+        <p>{props.text}</p>
+      </div>
+    </div>
+  );
+};
+
+CarouselItem.PropTypes = {
+  src: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
+};
+
+function CarouselLink({isActive, index}) {
+  return (
+    <li data-target='#vwyf-highlights-carousel'
+      data-slide-to={index}
+      className={isActive ? 'active' : ''}>
+    </li>
+  );
+};
+
+function Carousel({items}) {
+  return (
+		<div id='vwyf-highlights-carousel' className='carousel slide' data-ride='carousel'>
+			<ol className='carousel-indicators'>
+        {
+          _.map(items, (item, i) => <CarouselLink key={i} index={i} isActive={i === 0} />)
+        }
+			</ol>
+
+			<div className='carousel-inner' role='listbox'>
+        {
+          _.map(items, (item, i) =>
+            <CarouselItem key={i} {...item} isActive={i === 0} />)
+        }
+			</div>
+
+			<a className='left carousel-control'
+        href='#vwyf-highlights-carousel' role='button' data-slide='prev'>
+				<span className='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>
+				<span className='sr-only'>Previous</span>
+			</a>
+			<a className='right carousel-control'
+        href='#vwyf-highlights-carousel' role='button' data-slide='next'>
+				<span className='glyphicon glyphicon-chevron-right' aria-hidden='true'></span>
+				<span className='sr-only'>Next</span>
+			</a>
+		</div>
+  );
 }
+
+function Highlights() {
+  const highlights = [
+    {
+      src: 'images/highlight_hillary_trump.jpg',
+      title: 'Most Voted Question',
+      text: 'Whenever the question shows up, it instantly drew a crowd, sometimes waiting in line for showing their opinion.',
+    },
+    {
+      src: 'images/highlight_homeless.jpg',
+      title: 'Conflicts in action and mind',
+      text: 'We observed people who voted to help, ran into homeless right away, debated hard, and declined to give money.',
+    },
+    {
+      src: 'images/highlight_uber.jpg',
+      title: 'Heated Discussion',
+      text: 'Seriously, Uber??',
+     },
+    {
+      src: 'images/highlight_dance.jpg',
+      title: 'Dance through the door?',
+      text: 'Applause for the one hundred people who dance on market street',
+    }
+  ];
+
+  return (
+    <div className='highlights'>
+			<Carousel items={highlights} />
+    </div>
+  );
+};
 
 const INTRO_1 = `Have a question for your fellow citizens and wonder how they'd react? We made an art installation for just that! "Vote With Your Feet" is a public installation that asks questions for citizens, and get answers from citizens.`;
 
