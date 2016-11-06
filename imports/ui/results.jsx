@@ -133,7 +133,7 @@ export class ResultsView extends React.Component {
   }
 
   getTitle() {
-    const tweet = <a href={TWITTER_PAGE_LINK} target='_blank'>#VoteWithYourFeet</a>;
+    const tweet = <a href='/' target='_blank'>#VoteWithYourFeet</a>;
     if (!this.state.numOfVotes) {
       return tweet;
     }
@@ -146,9 +146,9 @@ export class ResultsView extends React.Component {
     return (
       <div className="main container-fluid">
         <header>
+          <a className='logo' href='/'><img src='images/logo.png'/></a>
           <span className='title'>{this.getTitle()}</span>
-          <span className='location'>Live at Fulton St & Larkin St, San Francisco</span>
-          <a className='submit' href={GOOGLE_FORM_LINK} target='_blank'>SUBMIT QUESTIONS</a>
+          <span className='location'>San Francisco 2016</span>
         </header>
         <Results />
       </div>

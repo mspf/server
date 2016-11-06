@@ -23,8 +23,8 @@ function NavLinks() {
           <li><a href='#what'>WHAT</a></li>
           <li><a href='#highlights'>HIGHLIGHTS</a></li>
           <li><a href='#votes'>VOTES</a></li>
-          <li><a href='#make'>MAKE</a></li>
           <li><a href='#team'>TEAM</a></li>
+          <li><a href='#make'>MAKE</a></li>
         </ul>
       </div>
     </nav>
@@ -183,14 +183,14 @@ function Make() {
     <div className='container make'>
       <div className='row'>
         <div className='col-md-5 col-md-offset-1'>
-          <a className='make-link' target='_blank'
+          <a className='big-link' target='_blank'
             href='http://www.instructables.com/id/Vote-With-Your-Feet/'>
             Instructable
           </a>
         </div>
 
         <div className='col-md-5'>
-          <a className='make-link' target='_blank'
+          <a className='big-link' target='_blank'
             href='https://github.com/vwyf'>
             Github
           </a>
@@ -199,14 +199,14 @@ function Make() {
 
       <div className='row'>
         <div className='col-md-5 col-md-offset-1'>
-          <a className='make-link' target='_blank'
+          <a className='big-link' target='_blank'
             href='http://www.instructables.com/id/Data-Collection-With-Raspberry-Pi/'>
             Data Collection
           </a>
         </div>
 
         <div className='col-md-5'>
-          <a className='make-link' target='_blank'
+          <a className='big-link' target='_blank'
             href='http://www.instructables.com/id/Howto-Flipdot-With-a-Raspi/'>
             How To Flipdot
           </a>
@@ -215,6 +215,27 @@ function Make() {
     </div>
   );
 };
+
+function Votes() {
+  return (
+    <div className='container votes make'>
+      <div className='row'>
+        <div className='col-md-5 col-md-offset-1'>
+          <a className='big-link' href={GOOGLE_FORM_LINK} target='_blank'>
+            SUBMIT QUESTIONS
+          </a>
+        </div>
+
+        <div className='col-md-5'>
+          <a className='big-link results' href='/results'>
+            SEE ALL VOTE RESULTS
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 
 const INTRO_1 = `Have a question for your fellow citizens and wonder how they'd react? We made an art installation for just that! "Vote With Your Feet" is a public installation that asks questions for citizens, and get answers from citizens.`;
 
@@ -246,12 +267,13 @@ export default class HomeView extends React.Component {
 
         <SectionTitle anchor='votes' title='THE VOTES' />
         <Results limit='8' numOfColumns='4' />
-
-        <SectionTitle anchor='make' title='THE MAKE' />
-        <Make />
+        <Votes />
 
         <SectionTitle anchor='team' title='THE TEAM' />
         <Team />
+
+        <SectionTitle anchor='make' title='THE MAKE' />
+        <Make />
 
         <Footer />
       </div>
