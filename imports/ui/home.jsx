@@ -21,8 +21,8 @@ function NavLinks() {
           <li><a href='#what'>WHAT</a></li>
           <li><a href='#highlights'>HIGHLIGHTS</a></li>
           <li><a href='#votes'>VOTES</a></li>
-          <li><a href='#team'>TEAM</a></li>
           <li><a href='#make'>MAKE</a></li>
+          <li><a href='#team'>TEAM</a></li>
         </ul>
       </div>
     </nav>
@@ -34,6 +34,10 @@ function Header() {
     <header>
       <a className='logo' href='/'><img src='images/logo.png'/></a>
       <NavLinks />
+      <iframe id='intro-video' src="https://player.vimeo.com/video/190417768"
+        width="640" height="360" frameborder="0"
+        webkitallowfullscreen mozallowfullscreen allowfullscreen>
+      </iframe>
     </header>
   );
 };
@@ -146,11 +150,81 @@ function TwitterTimeLine() {
         href='https://twitter.com/vwyf1x1'></a>
     </div>
   );
-}
+};
+
+function Team() {
+  return (
+    <div className='container team'>
+      <div className='row'>
+        <div className='col-md-3 ppl'>
+          <a className='name' target='_blank' href='http://cheeriocheng.com'>Cheng Xu</a>
+        </div>
+
+        <div className='col-md-3 ppl'>
+          <a className='name' target='_blank' href='http://emeraldbottery.com'>Mike Philetus Weller</a>
+        </div>
+
+        <div className='col-md-3 ppl'>
+          <a className='name' target='_blank' href='https://github.com/parano'>Chaoyu Yang</a>
+        </div>
+
+        <div className='col-md-3 ppl'>
+          <a className='name' target='_blank' href='http://ziyunpeng.com'>Ziyun Peng</a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+function Make() {
+  return (
+    <div className='container make'>
+      <div className='row'>
+        <div className='col-md-5 col-md-offset-1'>
+          <a className='make-link' target='_blank'
+            href='http://www.instructables.com/id/Vote-With-Your-Feet/'>
+            Instructable
+          </a>
+        </div>
+
+        <div className='col-md-5'>
+          <a className='make-link' target='_blank'
+            href='https://github.com/vwyf'>
+            Github
+          </a>
+        </div>
+      </div>
+
+      <div className='row'>
+        <div className='col-md-5 col-md-offset-1'>
+          <a className='make-link' target='_blank'
+            href='http://www.instructables.com/id/Data-Collection-With-Raspberry-Pi/'>
+            Data Collection
+          </a>
+        </div>
+
+        <div className='col-md-5'>
+          <a className='make-link' target='_blank'
+            href='http://www.instructables.com/id/Howto-Flipdot-With-a-Raspi/'>
+            How To Flipdot
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const INTRO_1 = `Have a question for your fellow citizens and wonder how they'd react? We made an art installation for just that! "Vote With Your Feet" is a public installation that asks questions for citizens, and get answers from citizens.`;
 
 const INTRO_2 = `Two doorways stand in the middle of the sidewalk, with a question displayed on a sign above them. Each door stands for an answer.`;
+
+function Footer() {
+  return (
+    <footer>
+      <a className='logo' href='https://twitter.com/vwyf1x1'><img src='images/logo.png'/></a>
+    </footer>
+  );
+}
 
 export default class HomeView extends React.Component {
   render() {
@@ -170,11 +244,13 @@ export default class HomeView extends React.Component {
         <SectionTitle anchor='votes' title='THE VOTES' />
         <TwitterTimeLine />
 
-        <SectionTitle anchor='team' title='THE TEAM' />
-
-
-
         <SectionTitle anchor='make' title='THE MAKE' />
+        <Make />
+
+        <SectionTitle anchor='team' title='THE TEAM' />
+        <Team />
+
+        <Footer />
       </div>
     );
   }
