@@ -73,6 +73,57 @@ header a:hover, header a:focus {
 header a.submit:hover, header a.submit:focus {
   background-color: rgba(255, 255, 255, .96);
 }
+
+header .logo {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+}
+
+header .logo img {
+  width: 100%;
+}
+
+header .navbar.navbar-default {
+  background: transparent;
+  border: none;
+}
+
+header .navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+}
+
+header .navbar .navbar-nav > li {
+  padding: 10px 25px;
+}
+
+header .navbar .navbar-nav > li > a {
+  color: #3e3e3e;
+  font-weight: 600;
+}
+
+header .navbar .navbar-nav > li > a:hover,
+header .navbar .navbar-nav > li > a:focus {
+  color: #949494;
+}
+
+header .navbar .navbar-collapse {
+  text-align: center;
+}
+
+.navbar-default .navbar-toggle {
+  border: 1px solid transparent;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  border: 1px solid #ddd;
+  background: none;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: transparent;
+}
  
 #login-buttons {
   display: block;
