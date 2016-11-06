@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 
 import AdminConsole from '/imports/ui/AdminConsole.jsx';
-import Results from '/imports/ui/Results.jsx';
+import { ResultsView } from '/imports/ui/Results.jsx';
 import HomeView from '/imports/ui/Home.jsx';
 
 import { Router, browserHistory, Route, IndexRoute } from 'react-router';
@@ -15,9 +15,9 @@ Meteor.startup(() => {
   render((
     <Router history={browserHistory} >
       <Route path="/" component={HomeView} />
-      <Route path="/results" component={Results} />
+      <Route path="/results" component={ResultsView} />
       <Route path="/admin" component={AdminConsole} />
-      <Route path="*" component={Results} />
+      <Route path="*" component={HomeView} />
     </Router>
   ), document.getElementById('render-target'));
-});
+})  

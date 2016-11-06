@@ -57,7 +57,7 @@ class ResultItem extends React.Component {
 
   render() {
     return (
-      <div className='col-md-4'>
+      <div className={'col-md-' + (12 / this.props.numOfColumns)}>
         <div className='result-wrapper'>
           <h1>{getQuestionText(this.props.question)}</h1>
           <div className='chart'>
@@ -71,18 +71,53 @@ class ResultItem extends React.Component {
 
 ResultItem.propTypes = {
   question: React.PropTypes.object,
+  numOfColumns: React.PropTypes.integer // integer in 1, 2, 3, 4, 6, 12
 }
 
-const ResultsRow = ({questions}) => (
+const ResultsRow = ({questions, numOfColumns}) => (
   <div className='results-row'>
     <div className='container'>
       <div className='row'>
-        {questions.map(question => <ResultItem key={question.id} question={question} />)}
+        {questions.map(question =>
+          <ResultItem key={question.id} question={question} numOfColumns={numOfColumns} />)}
       </div>
     </div>
   </div>);
 
-class Results extends TrackerReact(React.Component) {
+export class Results extends TrackerReact(React.Component) {
+  renderResults() {
+    let questions = _.take(Questions.find(
+      {priority: {$lt: 4}}, {sort: {lastUpdatedAt: -1}}
+    ).fetch(), this.props.limit);
+
+    return _.chunk(questions, this.props.numOfColumns).map(
+      (threeQuestions, i) =>
+        <ResultsRow key={i}
+          questions={threeQuestions}
+          numOfColumns={this.props.numOfColumns}
+        />);
+  }
+
+  render() {
+    return (
+      <div className='all-results-wrapper'>
+        {this.renderResults()}
+      </div>
+    );
+  }
+}
+
+Results.PropTypes = {
+  limit: React.PropTypes.integer,
+  numOfColumns: React.PropTypes.integer // integer in 1, 2, 3, 4, 6, 12
+};
+
+Results.defaultProps = {
+  limit: 1000,
+  numOfColumns: 3,
+};
+
+export class ResultsView extends React.Component {
   constructor() {
     super();
 
@@ -95,14 +130,6 @@ class Results extends TrackerReact(React.Component) {
         this.setState({numOfVotes: result});
       }
     });
-  }
-
-  renderResults() {
-    let questions = Questions.find(
-      {priority: {$lt: 4}}, {sort: {lastUpdatedAt: -1}}
-    ).fetch();
-    return _.chunk(questions, 3).map(
-      (threeQuestions, i) => <ResultsRow key={i} questions={threeQuestions} />);
   }
 
   getTitle() {
@@ -123,12 +150,8 @@ class Results extends TrackerReact(React.Component) {
           <span className='location'>Live at Fulton St & Larkin St, San Francisco</span>
           <a className='submit' href={GOOGLE_FORM_LINK} target='_blank'>SUBMIT QUESTIONS</a>
         </header>
-        <div className='all-results-wrapper'>
-          {this.renderResults()}
-        </div>
+        <Results />
       </div>
     );
   }
-}
-
-export default Results;
+};

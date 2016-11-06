@@ -175,13 +175,13 @@ header .navbar .navbar-collapse {
 }
 
 .twitter-wrapper {
-  max-width: 700px;
+  max-width: 620px;
   display: block;
-  margin: 0 auto;
+  margin: 40px auto 0;
 }
 
 @media screen and (min-width: 768px) {
-  .carousel-caption {
+  .carousel-captwan {
     right: 30%;
     left: 30%;
   }
@@ -338,11 +338,6 @@ span.location {
   margin-bottom: 10px;
 }
 
-
-.team .ppl {
-
-}
-
 .team .name {
   text-align: center;
   display: block;
@@ -362,7 +357,7 @@ span.location {
   font-weight: 600;
 }
 
-.make .row {
+.make .col-md-5 {
   padding: 30px 0;
 }
 

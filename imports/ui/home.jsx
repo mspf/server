@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash'
+import { Results } from './Results.jsx';
 
 const TWITTER_PAGE_LINK = 'https://twitter.com/vwyf1x1';
 const GOOGLE_FORM_LINK = 'https://goo.gl/forms/lf9dBVNkjt0ixVmn2';
@@ -8,7 +9,8 @@ function NavLinks() {
   return (
     <nav className='navbar navbar-default' role='navigation'>
       <div className='navbar-header'>
-        <button type='button' className='navbar-toggle' data-toggle='collapse' data-target='.navbar-ex1-collapse'>
+        <button type='button'
+          className='navbar-toggle' data-toggle='collapse' data-target='.navbar-ex1-collapse'>
           <span className='sr-only'>Toggle navigation</span>
           <span className='icon-bar'></span>
           <span className='icon-bar'></span>
@@ -35,8 +37,8 @@ function Header() {
       <a className='logo' href='/'><img src='images/logo.png'/></a>
       <NavLinks />
       <iframe id='intro-video' src="https://player.vimeo.com/video/190417768"
-        width="640" height="360" frameborder="0"
-        webkitallowfullscreen mozallowfullscreen allowfullscreen>
+        width="640" height="360" frameBorder="0"
+        allowFullScreen>
       </iframe>
     </header>
   );
@@ -143,8 +145,8 @@ function TwitterTimeLine() {
   return (
     <div className='twitter-wrapper'>
       <a className='twitter-timeline'
-        data-width='800'
-        data-height='260'
+        data-width='620'
+        data-height='230'
         data-theme='light'
         data-link-color='#2B7BB9'
         href='https://twitter.com/vwyf1x1'></a>
@@ -237,12 +239,13 @@ export default class HomeView extends React.Component {
           <p>{INTRO_1}</p>
           <p>{INTRO_2}</p>
         </div>
+        <TwitterTimeLine />
 
         <SectionTitle anchor='highlights' title='HIGHLIGHTS' />
         <Highlights />
 
         <SectionTitle anchor='votes' title='THE VOTES' />
-        <TwitterTimeLine />
+        <Results limit='8' numOfColumns='4' />
 
         <SectionTitle anchor='make' title='THE MAKE' />
         <Make />
