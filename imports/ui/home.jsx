@@ -158,20 +158,24 @@ function Team() {
   return (
     <div className='container team'>
       <div className='row'>
-        <div className='col-md-3 ppl'>
+        <div className='col-md-2 col-md-offset-1 ppl'>
           <a className='name' target='_blank' href='http://cheeriocheng.com'>Cheng Xu</a>
         </div>
 
-        <div className='col-md-3 ppl'>
+        <div className='col-md-2 ppl'>
           <a className='name' target='_blank' href='http://emeraldbottery.com'>Mike Philetus Weller</a>
         </div>
 
-        <div className='col-md-3 ppl'>
+        <div className='col-md-2 ppl'>
           <a className='name' target='_blank' href='https://github.com/parano'>Chaoyu Yang</a>
         </div>
 
-        <div className='col-md-3 ppl'>
+        <div className='col-md-2 ppl'>
           <a className='name' target='_blank' href='http://ziyunpeng.com'>Ziyun Peng</a>
+        </div>
+
+        <div className='col-md-2 ppl'>
+          <a className='name' target='_blank' href='https://about.me/yubozhao'>Bozhao Yu</a>
         </div>
       </div>
     </div>
@@ -239,7 +243,11 @@ function Votes() {
 
 const INTRO_1 = `Have a question for your fellow citizens and wonder how they'd react? We made an art installation for just that! "Vote With Your Feet" is a public installation that asks questions for citizens, and get answers from citizens.`;
 
-const INTRO_2 = `Two doorways stand in the middle of the sidewalk, with a question displayed on a sign above them. Each door stands for an answer.`;
+const INTRO_2 = `Two doorways stand in the middle of the sidewalk, with a question displayed on a sign above them. Each door stands for an answer. Walk through the door, and your vote will be counted, viewable both at the door and on our website.`;
+
+const INTRO_3 = `The result? We got more than ten thousand votes over 3 days on Market St, San Francisco, to about 80 rotating questions, all of which are crowd-sourced online or at the door. It covers everything from election to pets, whether serious (death penalty) or silly (cats or dogs), reflective (are you happy) or evocative (Trump or Hitler), technical (vim or emacs) or whimsical(would you dance through the door?).`
+
+const INTRO_4 = `We’re so grateful and proud of all the people who submitted the questions. It was your questions that gave the Vote With Your Feet project a life. The reflection and conversation started at the doorways will carry on beyond the installation itself.`
 
 function Footer() {
   return (
@@ -259,6 +267,8 @@ export default class HomeView extends React.Component {
         <div className='intro'>
           <p>{INTRO_1}</p>
           <p>{INTRO_2}</p>
+          <p>{INTRO_3}</p>
+          <p>{INTRO_4}</p>
         </div>
         <TwitterTimeLine />
 
