@@ -44,7 +44,8 @@ for row in a_reader:
     if (cur_time < prev_time):
         print("Warning: prev_time larger than cur_time")
 
-
+# write header
+file.write("questionId,location,totalCount,totalDuration,avgInterval\n")
 for k,v in questions_location_dic.iteritems():
     # questionId,location,totalCount,totalDuration,avgInterval
     avgInterval = str(v[1].total_seconds() / (v[0] - 1)) if v[0] > 1 else 'None'
