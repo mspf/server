@@ -49,6 +49,7 @@ file.write("questionId,location,totalCount,totalDuration,avgInterval\n")
 for k,v in questions_location_dic.iteritems():
     # questionId,location,totalCount,totalDuration,avgInterval
     avgInterval = str(v[1].total_seconds() / (v[0] - 1)) if v[0] > 1 else 'None'
+    print("calculating: " + str(v[1].total_seconds()) + "s, and count: " + str(v[0]) + ", avg: " + str(avgInterval))
     row = [k[0],k[1],str(v[0]),str(v[1].total_seconds()),avgInterval]
     file.write(','.join(row) + '\n')
 
